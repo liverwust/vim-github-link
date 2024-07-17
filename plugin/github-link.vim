@@ -41,8 +41,8 @@ function! s:execute_with_ref(ref, startline, endline)
     let s:root = system("git rev-parse --show-toplevel")
     let s:path_from_root = strpart(expand('%:p'), strlen(s:root))
 
-    " https://github.com/OWNER/REPO/blob/BRANCH/PATH/FROM/ROOT#LN-LM
-    let s:link = s:repo . "/blob/" . a:ref . "/" . s:url_encode_path_segments(s:path_from_root)
+    " https://github.com/OWNER/REPO/-/blob/BRANCH/PATH/FROM/ROOT#LN-LM
+    let s:link = s:repo . "/-/blob/" . a:ref . "/" . s:url_encode_path_segments(s:path_from_root)
 
     " Check for doc extensions and add plain query parameter, because otherwise
     " GitHub ignores the line highlight
